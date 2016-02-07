@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Logic-board</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+      html, body {
+        height: 100%;
+      }
+      .flex-container {
+          display: flex;
+          flex-direction: row;
+          height: 100%;
+      }
+
+      .flex-item {
+          flex: 2;
+          border: 1px solid #000;
+      }
+    </style>
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+        System.import('app/main'); // 진입점이 되는 js 경로
+    </script>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div id="code-container" class="flex-item">
+        <textarea></textarea>
+      </div>
+      <div id="diagram-container" class="flex-item">
+        drawing diagram
+      </div>
+    </div>
+  </body>
+</html>
