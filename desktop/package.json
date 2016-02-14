@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/electron ."
   },
   "author": "",
   "license": "ISC",
   "jspm": {
     "dependencies": {
       "jquery": "npm:jquery@^2.2.0",
+      "knsv/mermaid": "github:knsv/mermaid@^0.5.8",
       "underscore": "npm:underscore@^1.8.3"
     },
     "devDependencies": {
