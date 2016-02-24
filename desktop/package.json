@@ -12,7 +12,7 @@
   "jspm": {
     "dependencies": {
       "jquery": "npm:jquery@^2.2.0",
-      "knsv/mermaid": "github:knsv/mermaid@^0.5.8",
+      "mermaid": "npm:mermaid@^0.5.8",
       "underscore": "npm:underscore@^1.8.3"
     },
     "devDependencies": {

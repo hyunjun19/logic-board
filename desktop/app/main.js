@@ -1,8 +1,7 @@
-/**
- * Created by hjpark on 2016. 2. 14..
- */
-console.log('main.js ready~!');
+import _ from 'underscore';
+import $ from 'jquery';
+import mermaid from 'mermaid';
 
-System.import('underscore');
-System.import('jquery');
-//System.import('knsv/mermaid');
+console.log('main.js underscore version is', _.VERSION);
+
+mermaid.initialize({startOnLoad:true});
