@@ -37,19 +37,17 @@
 </head>
 <body>
 <div class="flex-container">
-    <textarea id="logic-editor" title="로직을 작성하는 곳입니다." class="flex-item">
+    <textarea id="lb-editor" title="로직을 작성하는 곳입니다." class="flex-item">
 graph LR
-    A-->B
-    B-->C
+    A[한국]-->B[미국]
+    B-->C[영국]
     C-->A
     D-->C
     </textarea>
     <div class="flex-div"></div>
-    <div id="diagram-container" class="flex-item">
-        <div class="mermaid" id="mermaid-canvas">
-            CHART DEFINITION GOES HERE
-        </div>
-    </div>
+      <div class="flex-item" id="lb-canvas">
+          CHART DEFINITION GOES HERE
+      </div>
 </div>
 </body>
 </html>

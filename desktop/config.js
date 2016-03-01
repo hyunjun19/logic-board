@@ -17,7 +17,8 @@ System.config({
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "core-js": "npm:core-js@1.2.6",
-    "jquery": "npm:jquery@2.2.0",
+    "css": "github:systemjs/plugin-css@0.1.20",
+    "jquery": "npm:jquery@2.2.1",
     "mermaid": "npm:mermaid@0.5.8",
     "underscore": "npm:underscore@1.8.3",
     "github:jspm/nodelibs-assert@0.1.0": {

@@ -27,7 +27,7 @@ app.on('ready', function() {
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
   // 개발자 도구를 엽니다.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // 창이 닫히면 호출됩니다.
   mainWindow.on('closed', function() {
