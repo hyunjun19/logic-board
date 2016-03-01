@@ -38,11 +38,17 @@
 <body>
 <div class="flex-container">
     <textarea id="lb-editor" title="로직을 작성하는 곳입니다." class="flex-item">
-graph LR
-    A[한국]-->B[미국]
-    B-->C[영국]
-    C-->A
-    D-->C
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail...
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
     </textarea>
     <div class="flex-div"></div>
       <div class="flex-item" id="lb-canvas">

@@ -10,12 +10,11 @@ console.log('main.js mermaid    version is', mermaid.version());
 mermaidAPI.initialize({startOnLoad:false});
 
 $(function(){
-  let diagram = {
-    'graph TB': 'graph top bottom(top down)',
-    'graph BT': 'graph bottom top',
-    'graph RL': 'graph right left',
-    'graph LR': 'graph left right'
-  };
+  let diagram = [
+    'graph',
+    'sequenceDiagram',
+    'gantt'
+  ];
 
   window.$lbEditor = $('#lb-editor');
   window.$lbCanvas = $('#lb-canvas');
@@ -31,8 +30,9 @@ $(function(){
 
   $(document.body).on('keypress', (e) => {
     if (e.ctrlKey && e.keyCode === 19) {
-    console.log('render');
-    $lbCanvas.render();
+      console.log('render');
+      // TODO change command pattern
+      $lbCanvas.render();
     }
   });
 });
