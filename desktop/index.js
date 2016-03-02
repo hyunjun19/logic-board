@@ -1,6 +1,9 @@
 'use strict';
 
-const { app, BrowserWindow, dialog } = require('electron');
+const electron = require('electron');
+const app = electron.app;  // 어플리케이션 기반을 조작 하는 모듈.
+const BrowserWindow = electron.BrowserWindow;  // 네이티브 브라우저 창을 만드는 모듈.
+// const { app, BrowserWindow, dialog } = require('electron');
 
 // 윈도우 객체를 전역에 유지합니다. 만약 이렇게 하지 않으면
 // 자바스크립트 GC가 일어날 때 창이 멋대로 닫혀버립니다.
