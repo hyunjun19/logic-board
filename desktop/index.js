@@ -41,15 +41,3 @@ app.on('ready', function() {
     app.quit();
   });
 });
-
-app.fsio = {
-    openLogicBoardFile() {
-        dialog.showOpenDialog({ properties: [ 'openFile' ]}, function(res){
-            console.log('openLogicBoardFile', res);
-            //fs.readFile('/etc/passwd', (err, data) => {
-            //    if (err) throw err;
-            //    console.log(data);
-            //});
-        });
-    }
-};

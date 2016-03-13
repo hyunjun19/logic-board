@@ -24,6 +24,7 @@ $(function(){
     'sequenceDiagram',
     'gantt'
   ];
+  let filePath;
 
   window.$lbEditor = $('#lb-editor');
   window.$lbCanvas = $('#lb-canvas');
@@ -39,6 +40,14 @@ $(function(){
 
   $(document.body).on('keypress', (e) => {
     if (e.ctrlKey && e.keyCode === 19) {
+      if (!filePath) {
+        remote.dialog.showSaveDialog({
+          title: 'select file...'
+        }, function(res){
+          console.log('showOpenDialog', res);
+        });
+      }
+
       console.log('render');
       // TODO change command pattern
       $lbCanvas.render();
