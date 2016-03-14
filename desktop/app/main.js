@@ -4,6 +4,7 @@ import mermaid from 'mermaid';
 import 'mermaid/dist/mermaid.forest.css!';
 
 const remote = require('electron').remote;
+const fs     = require('fs');
 
 /////////////////////////////////////
 // for debugging                   //
@@ -40,11 +41,23 @@ $(function(){
 
   $(document.body).on('keypress', (e) => {
     if (e.ctrlKey && e.keyCode === 19) {
-      if (!filePath) {
+      if (filePath) {
+        fs.writeFile(filePath, $lbEditor.val(), (err) => {
+          if (err) throw err;
+          console.log('It\'s saved!');
+        });
+      } else {
         remote.dialog.showSaveDialog({
-          title: 'select file...'
-        }, function(res){
-          console.log('showOpenDialog', res);
+          title: 'save file...'
+        }, function(selectedFilePath){
+          console.log('showSaveDialog', selectedFilePath);
+          fs.writeFile(selectedFilePath, $lbEditor.val(), (err) => {
+            if (err) throw err;
+
+            console.log('It\'s saved!');
+            window.document.title = selectedFilePath;
+            filePath = selectedFilePath;
+          });
         });
       }
 
