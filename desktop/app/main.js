@@ -1,10 +1,10 @@
-import _ from 'underscore';
+import _ from 'lodash';
 import $ from 'jquery';
 import mermaid from 'mermaid';
 import 'mermaid/dist/mermaid.forest.css!';
 
 const remote = require('electron').remote;
-const fs     = require('fs');
+const fs     = require('graceful-fs');
 
 /////////////////////////////////////
 // for debugging                   //
@@ -32,9 +32,13 @@ $(function(){
 
   $lbCanvas.render = function(){
     $lbCanvas.empty();
-    mermaidAPI.render('lb-output', $lbEditor.val(), function(svgCode, bindFunctions){
-      $lbCanvas.html(svgCode);
-    });
+    var logicTxt = $lbEditor.val();
+    if (logicTxt) {
+      mermaidAPI.render('lb-output', logicTxt, function(svgCode, bindFunctions){
+        $lbCanvas.html(svgCode);
+        console.log('input\n---------------------\n', logicTxt);
+      });
+    }
   };
 
   $lbCanvas.render();
