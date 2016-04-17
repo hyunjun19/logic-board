@@ -51,13 +51,23 @@ $(function(){
     if (!e.ctrlKey) { return; }
 
     switch (e.keyCode) {
+      // Ctrl + S
       case 19:
         commands.save();
         break;
+
+      // Ctrl + O
       case 15:
         commands.open();
         break;
+
+      // Ctrl + E
+      case 5:
+        commands.export();
+        break;
+
       default:
+        // console.log(e.keyCode);
         break;
     }
   });
