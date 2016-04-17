@@ -3,32 +3,36 @@ import $ from 'jquery';
 import mermaid from 'mermaid';
 import 'mermaid/dist/mermaid.forest.css!';
 
-const remote = require('electron').remote;
-const fs     = require('graceful-fs');
-
-/////////////////////////////////////
-// for debugging                   //
-/////////////////////////////////////
-window.remote = remote;
-
+const remote   = require('electron').remote;
+const Commands = require('./app/commands');
 
 console.log('app version is', remote.app.getVersion());
-console.log('main.js underscore version is', _.VERSION);
-console.log('main.js jquery     version is', $.fn.jquery);
-console.log('main.js mermaid    version is', mermaid.version());
-
-mermaidAPI.initialize({startOnLoad:false});
+console.log('main.js lodash  version is', _.VERSION);
+console.log('main.js jquery  version is', $.fn.jquery);
+console.log('main.js mermaid version is', mermaid.version());
 
 $(function(){
+  mermaidAPI.initialize({startOnLoad:false});
+
   let diagram = [
     'graph',
     'sequenceDiagram',
     'gantt'
   ];
-  let filePath;
 
-  window.$lbEditor = $('#lb-editor');
-  window.$lbCanvas = $('#lb-canvas');
+  let $lbEditor = $('#lb-editor');
+  let $lbCanvas = $('#lb-canvas');
+  let commands = Commands($lbEditor, $lbCanvas);
+
+  /////////////////////////////////////
+  // for debugging                   //
+  /////////////////////////////////////
+  window.remote = remote;
+  window.$lbEditor = $lbEditor;
+  window.$lbCanvas = $lbCanvas;
+  /////////////////////////////////////
+  // for debugging                   //
+  /////////////////////////////////////
 
   $lbCanvas.render = function(){
     $lbCanvas.empty();
@@ -58,52 +62,4 @@ $(function(){
     }
   });
 
-  const commands = {
-    open: function(){
-      remote.dialog.showOpenDialog({
-        title: 'open file...'
-      }, function(selectedFilePaths){
-        if (_.isEmpty(selectedFilePaths)) { return; }
-
-        let selectedFilePath = selectedFilePaths[0];
-        fs.readFile(selectedFilePath, (err, data) => {
-          if (err) throw err;
-
-          let content = String(data);
-          window.document.title = selectedFilePath;
-          filePath = selectedFilePath;
-
-          $lbEditor.val(content);
-          $lbCanvas.render();
-        });
-      });
-    },
-    save: function(){
-      if (filePath) {
-        fs.writeFile(filePath, $lbEditor.val(), (err) => {
-          if (err) throw err;
-
-          console.log('It\'s saved!');
-        });
-      } else {
-        remote.dialog.showSaveDialog({
-          title: 'save file...'
-        }, function(selectedFilePath){
-          if (_.isEmpty(selectedFilePath)) { return; }
-
-          fs.writeFile(selectedFilePath, $lbEditor.val(), (err) => {
-            if (err) throw err;
-
-            console.log('It\'s saved!');
-            window.document.title = selectedFilePath;
-            filePath = selectedFilePath;
-          });
-        });
-      }
-
-      console.log('render');
-      // TODO change command pattern
-      $lbCanvas.render();
-    }
-  };
 });
